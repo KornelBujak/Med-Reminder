@@ -29,7 +29,7 @@ namespace Med_Reminder
         {
             if (instance == null)
             {
-                Console.WriteLine("GetInstance is called.");
+                Console.WriteLine("GetInstance jest wywołane.");
                 instance = new Twilio(accountSid, authToken, fromPhoneNumber);
             }
             return instance;
@@ -46,7 +46,7 @@ namespace Med_Reminder
                 };
 
                 MessageResource.Create(messageOptions);
-                Console.WriteLine("Message sent successfully.");
+                Console.WriteLine("Wiadomość wysłana pomyślnie.");
 
                 using (var dbContext = new MyAppDbContext())
                 {
@@ -60,15 +60,15 @@ namespace Med_Reminder
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($"Twilio API error: {ex.Message}");
+                Console.WriteLine($"Błąd związany z API Twilio: {ex.Message}");
             }
             catch (ApiConnectionException ex)
             {
-                Console.WriteLine($"Connection error: {ex.Message}");
+                Console.WriteLine($"Błąd połączenia: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"General error: {ex.Message}");
+                Console.WriteLine($"Ogólny błąd: {ex.Message}");
             }
         }
     }
