@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Med_Reminder.MainPage"
+             Title="MainPage">
+    <Grid>
+        <Image Source="mainpage.jpg" Aspect="AspectFill"/>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Background="Transparent">
+            <Image Source="mainpage.jpg" Aspect="AspectFill" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="Start"/>
+            <Button Text="Moja lista przypomnień" Clicked="MyRemindersButton_Clicked" WidthRequest="320" HeightRequest="50" TextColor="Black" FontAttributes="Bold" BackgroundColor="#C6FCFF" Margin="0,20,0,0" FontSize="Medium"/>
+            <Button Text="Moja lista leków" Clicked="MyMedicationsButton_Clicked" Margin="0,20,0,0" WidthRequest="320" HeightRequest="50" TextColor="Black" FontAttributes="Bold" BackgroundColor="#C6FCFF" FontSize="Medium"/>
+            <Button Text="Ustaw nowe przypomnienie" Clicked="SetReminderButton_Clicked" Margin="0,20,0,0" WidthRequest="320" HeightRequest="50" TextColor="Black" FontAttributes="Bold" BackgroundColor="#C6FCFF" FontSize="Medium"/>
+            <Button Text="Oblicz dawkę leku" Clicked="CalculateDoseButton_Clicked" Margin="0,20,0,0" WidthRequest="320" HeightRequest="50" TextColor="Black" FontAttributes="Bold" BackgroundColor="#C6FCFF" FontSize="Medium"/>
+            <Button Text="Mój profil" Clicked="MyProfileButton_Clicked" HorizontalOptions="FillAndExpand" Margin="0,70,0,0" WidthRequest="320" HeightRequest="50" TextColor="Black" FontAttributes="Bold" BackgroundColor="#C6FCFF" FontSize="Medium"/>
+            <Button Text="Wyloguj" Clicked="LogoutButton_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="#89CFF0" Margin="0,10,0,0" WidthRequest="320" HeightRequest="50" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+

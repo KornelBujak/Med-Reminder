@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Med_Reminder.SetReminderPage"
+             Title="SetReminderPage">
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Grey">
+        <Label Text="WYBÓR OPCJI PRZYPOMNIENIA"
+               HorizontalOptions="Center"
+               FontSize="Header"
+               Margin="0,0,0,20"
+               TextColor="Black"
+               FontAttributes="Bold"/>
+
+        <Label Text="Lek" 
+                HorizontalOptions="Start"
+                TextColor="Black"
+                FontAttributes="Bold"
+               FontSize="Small"/>
+        <Picker x:Name="medicationPicker"
+                FontSize="Small"
+                Margin="0,0,0,20"
+                HorizontalOptions="Start"
+                HeightRequest="40" 
+                WidthRequest="300"/>
+
+        <Label Text="Data przypomnienia" 
+                HorizontalOptions="Start"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="Small"/>
+        <DatePicker x:Name="dateReminderPicker"
+                    FontSize="Small"
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Start"
+                    HeightRequest="40" 
+                    WidthRequest="300"/>
+
+        <Label Text="Godzina przypomnienia"
+                HorizontalOptions="Start"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="Small"/>
+        <TimePicker x:Name="timeReminderPicker"
+                    FontSize="Small"
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Start"
+                    HeightRequest="40" 
+                    WidthRequest="300"/>
+
+        <Label Text="Powtarzaj przypomnienie co tydzień" 
+                HorizontalOptions="Start"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="Small"/>
+        <Switch x:Name="repeatWeeklySwitch" />
+
+        <Label Text="Powtarzaj przypomnienie codziennie" 
+                HorizontalOptions="Start"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="Small"/>
+        <Switch x:Name="repeatDailySwitch" />
+
+        <Label Text="Data rozpoczęcia" 
+                 HorizontalOptions="Start"
+                 TextColor="Black"
+                 FontAttributes="Bold"
+                 FontSize="Small"/>
+        <DatePicker x:Name="startDatePicker"
+                    FontSize="Small"
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Start"
+                    HeightRequest="40" 
+                    WidthRequest="300"/>
+
+        <Label Text="Data zakończenia" 
+                HorizontalOptions="Start"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="Small"/>
+        <DatePicker x:Name="endDatePicker" 
+                    FontSize="Small"
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Start"
+                    HeightRequest="40" 
+                    WidthRequest="300"/>
+
+        <Button Text="Ustaw przypomnienie"
+                Clicked="SetReminderButton_Clicked"
+                BackgroundColor="#89CFF0"
+                TextColor="Black"
+                WidthRequest="300"
+                HeightRequest="40"
+                Margin="0,0,0,10"
+                FontAttributes="Bold"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="Center"/>
+
+        <Button Text="Wyślij powiadomienie na SMS"
+                Clicked="SendSmsButton_Clicked"
+                BackgroundColor="#89CFF0"
+                TextColor="Black"
+                WidthRequest="300"
+                Margin="0,0,0,5"
+                HeightRequest="40"
+                FontAttributes="Bold"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Med_Reminder.MyMedicationsPage"
+             Title="MyMedicationsPage">
+    <VerticalStackLayout HorizontalOptions="FillAndExpand" BackgroundColor="Grey">
+        <Label Text="WYBÓR LEKU" HorizontalOptions="Center" FontSize="Header" Margin="0,0,0,20" TextColor="Black" FontAttributes="Bold"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20" BackgroundColor="Grey">
+            <Label Text="Wybierz Lek" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,0"/>
+            <Picker x:Name="MedicationPicker"  Margin="0,5,0,0" FontSize="Small" HeightRequest="50" WidthRequest="300"/>
+            <Entry x:Name="CommentEntry" Placeholder="Dodaj komentarz" Margin="0,20,0,0" TextColor="Black" FontSize="Small" WidthRequest="300" HeightRequest="50"/>
+            <Entry x:Name="MedicationEntry" Placeholder="Wpisz własny lek" Completed="MedicationEntry_Completed" Margin="0,20,0,0" WidthRequest="300" HeightRequest="50" FontSize="Small"/>
+            <Entry x:Name="DosageEntry" Placeholder="Wprowadź dawkę" Margin="0,20,0,0" WidthRequest="300" FontSize="Small" HeightRequest="50"/>
+            <Button Text="Zapisz lek" Clicked="SaveMedicationButton_Clicked" Margin="0,180,0,0" WidthRequest="300" FontSize="Medium" HeightRequest="50" FontAttributes="Bold" TextColor="Black" />
+            <ListView x:Name="MedicationList" />
+            <Button Text="Zapisz jako PDF"
+        Clicked="SaveMedicationAsPDFButton_Clicked" Margin="0,20,0,0" WidthRequest="300" FontSize="Medium" HeightRequest="50" FontAttributes="Bold" TextColor="Black"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

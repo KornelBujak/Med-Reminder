@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Med_Reminder.CalculateDosePage"
+             Title="CalculateDosePage">
+    <VerticalStackLayout Padding="20" BackgroundColor="Grey">
+        <Label Text="OBLICZANIE DAWKI LEKU" HorizontalOptions="Center" FontSize="Header" Margin="0,0,0,20" TextColor="Black" FontAttributes="Bold"/>
+
+        <VerticalStackLayout>
+            <Label x:Name="WagaLabel" 
+               Text="Waga:"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               FontSize="Medium"
+              />
+
+            <Label x:Name="Uwaga" 
+               Text="Pamiętaj, że należy stosować się do zaleceń lekarza lub farmaceuty, a także nie dawkować samodzielnie leków na receptę!"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               FontSize="Title"
+               Margin="0,10,0,0"/>
+
+            <Label x:Name="Instructions1" 
+               Text="Instrukcje:"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" 
+                   Margin="0,20,0,0"
+                   FontSize="Medium"
+                   FontAttributes="Bold"/>
+
+            <Label x:Name="Instructions2" 
+               Text="1. Aby obliczyć całkowitą ilość leku jaką należy przyjąć podaj przepisaną ilość leku w mg/kg masy ciała. Liczbę tę można zazwyczaj znaleźć na opakowaniu leku, w ulotce dla pacjenta lub na recepcie "
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+                   FontSize="Medium"/>
+
+            <Label x:Name="Instructions3" 
+               Text="2. Aby obliczyć całkowitą ilość leku w płynie jaką należy przyjąć (jeśli nie wiemy przykładowo ile ml leku należy przyjąć, aby spożyć np. 50 mg substancji czynnej) podaj dawkę w mg/kg oraz stężenie leku (Ilość substancji czynnej na daną objętość leku. Może być wyrażona w mg/ml.)"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+                   FontSize="Medium"/>
+            
+            <Label Text="Lek w płynie?" HorizontalOptions="Center" TextColor="Black" FontSize="Medium" Margin="0,30,0,0" FontAttributes="Bold" />
+            <Switch x:Name="IsLiquidMedicineSwitch" HorizontalOptions="Center" IsToggled="false" OnColor="Black" ThumbColor="Red" />
+        </VerticalStackLayout>
+
+        <BoxView HeightRequest="20" BackgroundColor="Transparent"/>
+
+        <StackLayout>
+            <Entry x:Name="DosageEntry" Placeholder="Dawkowanie (mg/kg)" Keyboard="Numeric" WidthRequest="300" HeightRequest="40" Margin="0,0,0,10" FontSize="Small" />
+            <Entry x:Name="ConcentrationEntry" Placeholder="Stężenie leku (mg/ml)" Keyboard="Numeric" WidthRequest="300" HeightRequest="40" Margin="0,0,0,10" FontSize="Small" />
+            <Button Text="Oblicz dawkę leku" Clicked="CalculateDoseButton_Clicked" BackgroundColor="#89CFF0" TextColor="Black" WidthRequest="300" HeightRequest="40" Margin="0,90,0,0" FontAttributes="Bold"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

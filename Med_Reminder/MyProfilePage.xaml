@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Med_Reminder.MyProfilePage"
+             Title="MyProfilePage">
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" BackgroundColor="White">
+        <Label Text="DANE UŻYTKOWNIKA" HorizontalOptions="Center" FontSize="Large" Margin="0,0,0,20" TextColor="Black" FontAttributes="Bold"/>
+
+        <StackLayout HorizontalOptions="Center">
+            <Label x:Name="ImieLabel" TextColor="Black" FontSize="Small" />
+            <Label x:Name="NazwiskoLabel" TextColor="Black" FontSize="Small" />
+            <Label x:Name="EmailLabel" TextColor="Black" FontSize="Small" />
+            <Label x:Name="PlecLabel" TextColor="Black" FontSize="Small" />
+            <Label x:Name="WiekLabel" TextColor="Black" FontSize="Small" />
+            <Label x:Name="WagaLabel" TextColor="Black" FontSize="Small" />
+            <Label x:Name="TelefonLabel" TextColor="Black" FontSize="Small" />
+        </StackLayout>
+        
+        <BoxView HeightRequest="20" BackgroundColor="Transparent"/>
+
+        <StackLayout>
+            <Label Text="EDYCJA DANYCH" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Margin="0,0,0,10"/>
+            <Entry x:Name="NewNameEntry" Placeholder="Nowe Nazwisko"  WidthRequest="300" HeightRequest="50" Margin="0,0,0,10" FontSize="Small" FontAttributes="Bold"/>
+            <Entry x:Name="NewEmailEntry" Placeholder="Nowy Adres e-mail" WidthRequest="300" HeightRequest="50" Margin="0,0,0,10" FontSize="Small" FontAttributes="Bold"/>
+            <Entry x:Name="NewPasswordEntry" Placeholder="Nowe Hasło" IsPassword="True"  WidthRequest="300" HeightRequest="50" Margin="0,0,0,10" FontSize="Small" FontAttributes="Bold"/>
+            <Entry x:Name="NewWeightEntry" Placeholder="Nowa Waga" Keyboard="Numeric" WidthRequest="300" HeightRequest="50" Margin="0,0,0,10" FontSize="Small" FontAttributes="Bold"/>
+            <Entry x:Name="NewPhoneNumberEntry" Placeholder="Nowy Numer Telefonu" Keyboard="Telephone"  WidthRequest="300" HeightRequest="50" Margin="0,0,0,10" FontSize="Small" FontAttributes="Bold"/>
+        </StackLayout>
+
+        <Button Text="Zapisz zmiany" Clicked="SaveChangesButton_Clicked" BackgroundColor="#89CFF0" TextColor="Black" WidthRequest="300" HeightRequest="50" FontAttributes="Bold" VerticalOptions="EndAndExpand" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>
