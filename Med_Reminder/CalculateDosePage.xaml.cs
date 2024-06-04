@@ -30,6 +30,7 @@ namespace Med_Reminder
             int userId = App.CurrentUserId;
             _currentUser = await _userProfileRepository.GetDaneOsoboweAsync(userId);
 
+            
             if (_currentUser != null)
             {
                 WagaLabel.Text = "Waga: " + _currentUser.Waga.ToString();
@@ -42,9 +43,16 @@ namespace Med_Reminder
 
         private void CalculateDoseButton_Clicked(object sender, EventArgs e)
         {
-            if (_currentUser.Wiek < 18)
+            DateTime currentDate = DateTime.Now;
+            int age = currentDate.Year - _currentUser.DataUrodzenia.Year;
+            if (currentDate < _currentUser.DataUrodzenia.AddYears(age))
             {
-                DisplayAlert("B³¹d", "Opcja dawkowania leku nie jest dostêpna dla u¿ytkownikow niepe³noletnich", "OK");
+                age--;
+            }
+
+            if (age < 18)
+            {
+                DisplayAlert("B³¹d", "Opcja dawkowania leku nie jest dostêpna dla u¿ytkowników niepe³noletnich", "OK");
                 return;
             }
             else
