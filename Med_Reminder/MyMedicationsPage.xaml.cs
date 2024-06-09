@@ -25,6 +25,7 @@ public partial class MyMedicationsPage : ContentPage
         string filePath = "C:\\Users\\korne\\OneDrive\\Pulpit\\Med-Reminder-main\\Med-Reminder-main\\Med_Reminder\\Lista_lekow.txt"; // Change to the correct path
         List<string> medications = pageLogic.ReadTextFile(filePath);
 
+
         if (medications != null && medications.Count > 0)
         {
             foreach (string medication in medications)
@@ -52,17 +53,14 @@ public partial class MyMedicationsPage : ContentPage
         Lek newMedication = new Lek()
         {
             NazwaLeku = selectedMedication,
-            DaneOsoboweId = App.CurrentUserId // Linking medication with the logged-in user
+            DaneOsoboweId = App.CurrentUserId 
         };
 
-        // Save medication to the database
         dbContext._leki.Add(newMedication);
         await dbContext.SaveChangesAsync();
 
-        // Display success message
         await DisplayAlert("Sukces", "Lek zosta³ zapisany.", "OK");
 
-        // Refresh medication list
         RefreshMedicationList();
     }
 
@@ -79,7 +77,7 @@ public partial class MyMedicationsPage : ContentPage
         if (!string.IsNullOrWhiteSpace(newMedication))
         {
             MedicationPicker.Items.Add(newMedication);
-            MedicationEntry.Text = string.Empty; // Clear the medication entry field after adding
+            MedicationEntry.Text = string.Empty; 
         }
     }
 
@@ -89,7 +87,6 @@ public partial class MyMedicationsPage : ContentPage
 
         if (selectedMedication != null)
         {
-            // Fetch user's name and ID from the database
             var currentUser = await dbContext._dane_osobowe.FindAsync(App.CurrentUserId);
             if (currentUser == null)
             {
@@ -99,35 +96,27 @@ public partial class MyMedicationsPage : ContentPage
             string userName = $"{currentUser.Imie} {currentUser.Nazwisko}";
             string userId = currentUser.Id.ToString();
 
-            // Get comment and dosage entered by the user
             string comment = CommentEntry.Text;
             string dosage = DosageEntry.Text;
             string ownMedication = MedicationEntry.Text;
 
-            // Add selected medication to the list of selected medications
             List<string> selectedMedications = new List<string>();
 
             if (!string.IsNullOrWhiteSpace(ownMedication))
             {
-                // Add own medication to the list of selected medications
                 selectedMedications.Add(ownMedication);
             }
             selectedMedications.Add(selectedMedication);
             selectedMedications.Add("Komentarz: " + comment);
             selectedMedications.Add("Dawka: " + dosage);
 
-            // Generate PDF file name based on the current date and time
             string fileName = "Lista_leków_" + DateTime.Now.ToString("yyyy_MM_dd") + ".pdf";
 
-            // Path to the folder where the PDF file will be saved
             string folderPath = "C:\\Users\\korne\\OneDrive\\Pulpit\\Med-Reminder-main\\Med-Reminder-main\\Med_Reminder";
             string filePath = Path.Combine(folderPath, fileName);
 
-            // Create PDF document
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filePath));
             Document doc = new Document(pdfDoc);
-
-            // Add header with user's name and ID to the PDF document
             Paragraph header = new Paragraph($"U¿ytkownik: {userName} (ID: {userId})")
                 .SetBold()
                 .SetFontSize(14);
@@ -144,15 +133,12 @@ public partial class MyMedicationsPage : ContentPage
                 doc.Add(para);
             }
 
-            // Finish editing the document and save it to the file
             doc.Close();
 
-            // Display message after saving the PDF file
             await DisplayAlert("Sukces", "Lista leków zosta³a zapisana jako plik PDF.","OK");
         }
         else
         {
-            // Display message if no medication is selected
             await DisplayAlert("B³¹d", "Wybierz lek z listy.", "OK");
         }
     }

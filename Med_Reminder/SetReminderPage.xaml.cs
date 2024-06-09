@@ -24,7 +24,7 @@ public partial class SetReminderPage : ContentPage
 
     private void LoadMedications()
     {
-        var medications = dbContext._leki.ToList();
+        var medications = dbContext._leki.Where(l => l.DaneOsoboweId == App.CurrentUserId).ToList();
         medicationPicker.ItemsSource = medications;
         medicationPicker.ItemDisplayBinding = new Binding("NazwaLeku");
     }
@@ -93,8 +93,6 @@ public partial class SetReminderPage : ContentPage
                     }
 
                     _twilio.SendSms(userPhoneNumber, message, reminder.Id);
-
-                    // Oznacz przypomnienie jako wys³ane
                     reminder._czywyslano = true;
                     dbContext._przypomnienia.Update(reminder);
                     await dbContext.SaveChangesAsync();
@@ -157,3 +155,4 @@ public partial class SetReminderPage : ContentPage
         }
     }
 }
+

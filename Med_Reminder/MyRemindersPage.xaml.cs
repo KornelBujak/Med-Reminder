@@ -20,15 +20,13 @@ public partial class MyRemindersPage : ContentPage
 
     private async void LoadReminders()
     {
-        
-            var reminders = await dbContext.GetRemindersForTodayAndFuture(App.CurrentUserId);
+        var reminders = await dbContext.GetRemindersForTodayAndFuture(App.CurrentUserId);
 
-            ReminderItems.Clear();
-
+        ReminderItems.Clear();
 
         foreach (var reminder in reminders)
         {
-            var medication = await dbContext._leki.FirstOrDefaultAsync(l => l.id_leku == reminder.id_leku);
+            var medication = await dbContext._leki.FirstOrDefaultAsync(l => l.id_leku == reminder.id_leku && l.DaneOsoboweId == App.CurrentUserId);
             if (medication != null)
             {
                 string reminderInfo = $"{reminder.data_pocz¹tkowa?.ToShortDateString()} {(reminder.godzina_przypomnienia != TimeSpan.Zero ? reminder.godzina_przypomnienia.ToString() : "")} - {medication.NazwaLeku} (ID: {medication.id_leku})";
@@ -39,10 +37,11 @@ public partial class MyRemindersPage : ContentPage
         RemindersList.ItemsSource = ReminderItems;
         if (ReminderItems.Count == 0)
         {
-            await DisplayAlert("B³¹d","Nie znaleziono przypmnieñ dla danego dnia i przysz³ych","OK");
+            await DisplayAlert("B³¹d", "Nie znaleziono przypomnieñ dla danego dnia i przysz³ych", "OK");
         }
     }
 }
+
        
     
 
