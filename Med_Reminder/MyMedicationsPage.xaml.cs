@@ -42,24 +42,34 @@ public partial class MyMedicationsPage : ContentPage
     private async void SaveMedicationButton_Clicked(object sender, EventArgs e)
     {
         var selectedMedication = MedicationPicker.SelectedItem?.ToString();
+        string customMedication = MedicationEntry.Text;
         string comment = CommentEntry.Text;
         string dosage = DosageEntry.Text;
-        if (string.IsNullOrWhiteSpace(selectedMedication) && string.IsNullOrEmpty(MedicationEntry.Text))
+
+        if (string.IsNullOrWhiteSpace(selectedMedication) && string.IsNullOrWhiteSpace(customMedication))
         {
             await DisplayAlert("B³¹d", "Wybierz lek albo wpisz w³asny.", "OK");
             return;
         }
 
+        string medicationName = string.IsNullOrWhiteSpace(customMedication) ? selectedMedication : customMedication;
+
         Lek newMedication = new Lek()
         {
-            NazwaLeku = selectedMedication,
-            DaneOsoboweId = App.CurrentUserId 
+            NazwaLeku = medicationName,
+            DaneOsoboweId = App.CurrentUserId
         };
 
         dbContext._leki.Add(newMedication);
         await dbContext.SaveChangesAsync();
 
         await DisplayAlert("Sukces", "Lek zosta³ zapisany.", "OK");
+
+        if (!string.IsNullOrWhiteSpace(customMedication))
+        {
+            MedicationPicker.Items.Add(customMedication);
+            MedicationEntry.Text = string.Empty;
+        }
 
         RefreshMedicationList();
     }

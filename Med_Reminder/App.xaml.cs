@@ -9,10 +9,11 @@ namespace Med_Reminder
 {
     public partial class App : Application
     {
-        private static Twilio _twilioInstance;
+        
         private readonly Timer _timer;
         private IHost _host;
         private ReminderBackgroundService _reminderBackgroundService;
+        private static Twilio _twilioInstance;
         public App()
         {
             InitializeComponent();
