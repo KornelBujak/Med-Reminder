@@ -22,7 +22,7 @@ public partial class MyMedicationsPage : ContentPage
 
     private async void LoadMedications()
     {
-        string filePath = "C:\\Users\\korne\\OneDrive\\Pulpit\\Med-Reminder-main\\Med-Reminder-main\\Med_Reminder\\Lista_lekow.txt"; // Change to the correct path
+        string filePath = "C:\\Users\\korne\\OneDrive\\Pulpit\\Med-Reminder-main\\Med-Reminder-main\\Med_Reminder\\Lista_lekow.txt"; 
         List<string> medications = pageLogic.ReadTextFile(filePath);
 
 
