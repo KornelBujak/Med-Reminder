@@ -1,0 +1,11 @@
+﻿/*
+   poniedziałek, 14 kwietnia 2025
+   User: zuzanna
+   Server: URY-89s
+   Database: Medical
+   Application: Med-Reminder
+*/
+
+__dane_osobowe
+__leki
+__przypomnienia
