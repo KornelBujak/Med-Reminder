@@ -1,0 +1,2 @@
+im = imread('kot.png');
+imshow(im)
