@@ -1,7 +1,7 @@
 clc;clear all;close all;
 
 [y,Fs]=audioread("przyklad_do_usuniecia_ciszy.wav");
-%%gotowe
+
 sound(y,Fs);
 
 tr = 25;                             
